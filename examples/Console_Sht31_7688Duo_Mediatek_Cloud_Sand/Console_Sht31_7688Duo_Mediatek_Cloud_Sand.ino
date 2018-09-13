@@ -11,10 +11,11 @@
 #include <Console.h>
 
 Jasper_SHT31 sht31 = Jasper_SHT31();
+
 BridgeClient bc;
 
 #define DEVICEID "xxxxxxxx" //8 characters from your MCS Device 
-#define DEVICEKEY "xxxxxxxxxxxxxxxx" //16 characters from your MCS Device 
+#define DEVICEKEY "xxxxxxxxxxxxxxxxl" //16 characters from your MCS Device 
 #define SITE_URL "api.mediatek.com"
 #define LED 13
 
@@ -29,19 +30,15 @@ void setup() {
   Bridge.begin();
   Console.begin();
 
+  if (! sht31.begin(0x44)) {   // Set to 0x45 for alternate i2c addr
+    Console.println("Couldn't find SHT31");
+    while (1) 
+    delay(1);
+  }
+
   getCommandServer();
   beat = millis();
   measure = millis();
-
-  while (!Console)
-    delay(10);     // will pause Zero, Leonardo, etc until serial console opens
-
-  Console.println("SHT31 test");
-  
-  if (! sht31.begin(0x44)) {   // Set to 0x45 for alternate i2c addr
-    Console.println("Couldn't find SHT31");
-    while (1) delay(1);
-  }
 }
 
 void getCommandServer()
@@ -71,26 +68,28 @@ void heartBeat(Client &c) {
   static const char* heartbeat = DEVICEID "," DEVICEKEY ",0";
   c.println(heartbeat);
   c.println();
-  delay(100);
+  delay(5000);
 }
 
-void loop() {
+void loop() {  
   float t = sht31.readTemperature();
   float h = sht31.readHumidity();
-
+  
   if (! isnan(t)) {  // check if 'is not a number'
     Console.print("Temp *C = "); Console.println(t);
+    upload_measure1(t);
   } else { 
     Console.println("Failed to read temperature");
   }
   
   if (! isnan(h)) {  // check if 'is not a number'
     Console.print("Hum. % = "); Console.println(h);
+    upload_measure2(h);
   } else { 
     Console.println("Failed to read humidity");
   }
   Console.println();
-  delay(1000);
+  delay(5000);
 }
 
 void upload_measure1(int temp) {
@@ -109,7 +108,7 @@ void upload_measure1(int temp) {
   http.post(SITE_URL "/mcs/v2/devices/" DEVICEID "/datapoints.csv", upload_temp.c_str());
   http.setTimeout(1000);
 
-  delay(300);
+  delay(5000);
 }
 
 void upload_measure2(int hum) {
@@ -128,5 +127,5 @@ void upload_measure2(int hum) {
   http.post(SITE_URL "/mcs/v2/devices/" DEVICEID "/datapoints.csv", upload_hum.c_str());
   http.setTimeout(1000);
 
-  delay(300);
+  delay(5000);
 }
