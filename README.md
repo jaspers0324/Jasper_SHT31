@@ -1,4 +1,2 @@
-Jasper_SHT31
-This is a Tempature and Humidity Sensor 
-The Example Code
+SHT 31 Tempature and Humidity Sensor 
 e
