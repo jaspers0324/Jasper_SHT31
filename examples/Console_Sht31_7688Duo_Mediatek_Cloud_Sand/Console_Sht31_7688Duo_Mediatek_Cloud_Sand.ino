@@ -13,8 +13,8 @@
 Jasper_SHT31 sht31 = Jasper_SHT31();
 BridgeClient bc;
 
-#define DEVICEID "DpgvR9Rj" 
-#define DEVICEKEY "eKsnrR4CxI6c2BJl" 
+#define DEVICEID "XXXXXXXX" //8 characters from your MCS Device
+#define DEVICEKEY "XXXXXXXXXXXXXXXX" //16 characters from your MCS Device
 #define SITE_URL "api.mediatek.com"
 #define LED 13
 
