@@ -1,1 +1,1 @@
-# SHT 31 Tempature and Humidity Sensor
+# SHT 31 Temperature and Humidity Sensor
