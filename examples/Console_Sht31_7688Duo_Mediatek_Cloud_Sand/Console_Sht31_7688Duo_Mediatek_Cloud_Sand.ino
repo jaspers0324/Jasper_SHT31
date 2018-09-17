@@ -15,16 +15,16 @@ Jasper_SHT31 sht31 = Jasper_SHT31();
 BridgeClient bc;
 
 #define DEVICEID "xxxxxxxx" //8 characters from your MCS Device 
-#define DEVICEKEY "xxxxxxxxxxxxxxxxl" //16 characters from your MCS Device 
+#define DEVICEKEY "xxxxxxxxxxxxxxxx" //16 characters from your MCS Device 
 #define SITE_URL "api.mediatek.com"
 #define LED 13
 
-static unsigned long beat = 0;
+//static unsigned long beat = 0;
 static String commandServer;
-static int commandPort = 0;
-static unsigned long measure = 0;
+//static int commandPort = 0;
+//static unsigned long measure = 0;
 
-int ret;
+//int ret;
 
 void setup() {
   Bridge.begin();
@@ -37,8 +37,8 @@ void setup() {
   }
 
   getCommandServer();
-  beat = millis();
-  measure = millis();
+  //beat = millis();
+  //measure = millis();
 }
 
 void getCommandServer()
