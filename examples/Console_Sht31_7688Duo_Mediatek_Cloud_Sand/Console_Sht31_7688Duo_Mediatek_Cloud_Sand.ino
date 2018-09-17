@@ -2,17 +2,17 @@
  * SHT31+7688DUO+MCS
  * https://mcs.mediatek.com/public/devices/DpgvR9Rj
  */
-#include <Arduino.h>
+//#include <Arduino.h>
 #include <Wire.h>
 #include "Jasper_SHT31.h"
 #include <Bridge.h>
 #include <HttpClient.h>
-#include <BridgeClient.h>
+//#include <BridgeClient.h>
 #include <Console.h>
 
 Jasper_SHT31 sht31 = Jasper_SHT31();
 
-BridgeClient bc;
+//BridgeClient bc;
 
 #define DEVICEID "xxxxxxxx" //8 characters from your MCS Device 
 #define DEVICEKEY "xxxxxxxxxxxxxxxx" //16 characters from your MCS Device 
