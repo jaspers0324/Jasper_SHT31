@@ -95,7 +95,7 @@ void loop() {
 void upload_measure1(int temp) {
 
   String str_temp = String(temp);
-  String upload_temp = "tempature,," + str_temp;
+  String upload_temp = "SHT31_T,," + str_temp;
   
   String header = "Content-Type: text-csv\r\n";
   header += "deviceKey: ";
@@ -114,7 +114,7 @@ void upload_measure1(int temp) {
 void upload_measure2(int hum) {
 
   String str_hum = String(hum);
-  String upload_hum = "humidity,," + str_hum;
+  String upload_hum = "SHT31_H,," + str_hum;
 
   String header = "Content-Type: text-csv\r\n";
   header += "deviceKey: ";
