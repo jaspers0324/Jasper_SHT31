@@ -28,16 +28,17 @@ void loop() {
   float h = sht31.readHumidity();
 
   if (! isnan(t)) {  // check if 'is not a number'
-    //Serial.print("Temp *C = "); 
+    Serial.print("Temp *C = "); 
     Serial.print(t);
   } else { 
     Serial.println("Failed to read temperature");
   }
 
   Serial.print(',');
+  Serial.print(' ');
   
   if (! isnan(h)) {  // check if 'is not a number'
-    //Serial.print("Hum. % = "); 
+    Serial.print("Hum. % = "); 
     Serial.print(h);
   } else { 
     Serial.println("Failed to read humidity");
